@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeff Sun CFTe - Complete Traders' Guide 완전판</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0b0f;--bg2:#12141a;--bg3:#1a1d26;--gold:#d4a853;--gold2:#f0c95c;--gd:#a07e3a;--tx:#e8e4dc;--tx2:#9a9590;--ac:#4ecdc4;--rd:#e74c3c;--gn:#2ecc71;--bl:#3498db;--pr:#9b59b6;--or:#e67e22;--br:rgba(212,168,83,0.15)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--tx);font-family:'Noto Sans KR',sans-serif;line-height:1.75;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--gd);border-radius:3px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 20px;background:radial-gradient(ellipse at 50% 30%,rgba(212,168,83,.08)0%,transparent 70%)}
+.hero-badge{display:inline-block;padding:6px 20px;border:1px solid var(--gold);color:var(--gold);font-size:11px;letter-spacing:4px;text-transform:uppercase;margin-bottom:30px;font-family:'JetBrains Mono',monospace}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,60px);font-weight:900;color:var(--gold);line-height:1.2;margin-bottom:16px}
+.hero h2{font-size:clamp(13px,2vw,18px);font-weight:300;color:var(--tx2);max-width:700px;margin-bottom:40px}
+.hero-stats{display:flex;gap:36px;margin-top:40px;flex-wrap:wrap;justify-content:center}
+.hs .n{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--gold)}
+.hs .l{font-size:10px;color:var(--tx2);letter-spacing:2px;text-transform:uppercase}
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,11,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--br);padding:0 20px;overflow-x:auto;white-space:nowrap}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex}
+.nb{padding:14px 16px;background:none;border:none;color:var(--tx2);font-size:12px;cursor:pointer;border-bottom:2px solid transparent;transition:.3s;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
+.nb:hover,.nb.on{color:var(--gold);border-bottom-color:var(--gold)}
+.ct{max-width:1100px;margin:0 auto;padding:20px}
+.ch{display:none;animation:fi .4s ease}.ch.on{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.ch-hd{padding:50px 0 30px;border-bottom:1px solid var(--br);margin-bottom:30px}
+.ch-n{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+.ch-t{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;line-height:1.3}
+.ch-s{font-size:14px;color:var(--tx2);margin-top:10px;font-weight:300}
+.cd{background:var(--bg2);border:1px solid var(--br);border-radius:12px;padding:24px;margin-bottom:16px;transition:.3s}
+.cd:hover{border-color:var(--gd)}
+.cd h3{font-size:15px;font-weight:700;color:var(--gold);margin-bottom:10px}
+.cd p,.cd li{font-size:13px;line-height:1.8}
+.cd ul{margin:8px 0 8px 16px}.cd ul li{margin-bottom:4px}
+.gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.gi{background:var(--bg3);border:1px solid var(--br);border-radius:8px;padding:14px 18px}
+.gt{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--gold2);margin-bottom:3px}
+.gd{font-size:12px;color:var(--tx2);line-height:1.6}
+.fl{display:flex;align-items:center;gap:0;overflow-x:auto;padding:20px 0;margin:16px 0}
+.fs{min-width:130px;padding:14px;background:var(--bg3);border:1px solid var(--br);border-radius:10px;text-align:center;font-size:12px;font-weight:500;flex-shrink:0}
+.fs.hl{border-color:var(--gold);background:rgba(212,168,83,.08);color:var(--gold)}
+.fa{font-size:18px;color:var(--gd);flex-shrink:0;padding:0 5px}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.rl{background:var(--bg3);border-left:3px solid var(--rd);border-radius:0 8px 8px 0;padding:14px 18px;font-size:12px;line-height:1.7}
+.rl strong{color:var(--gold2)}.rl .rn{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--rd);margin-bottom:3px;display:block}
+.sd{text-align:center;padding:24px 0;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gd);letter-spacing:4px}
+.sd::before,.sd::after{content:'────────';margin:0 10px}
+.tg{display:inline-block;padding:2px 8px;background:rgba(212,168,83,.1);color:var(--gold);font-size:10px;border-radius:3px;font-family:'JetBrains Mono',monospace;margin:2px}
+.tg.gn{background:rgba(46,204,113,.1);color:var(--gn)}.tg.bl{background:rgba(52,152,219,.1);color:var(--bl)}.tg.rd{background:rgba(231,76,60,.1);color:var(--rd)}
+.ic{background:var(--bg2);border:1px solid var(--br);border-radius:12px;padding:24px;margin-bottom:16px}
+.ic h3{font-size:15px;font-weight:700;color:var(--ac);margin-bottom:10px}.ic h3::before{content:'▸ ';color:var(--gold)}
+.ss{margin:8px 0 8px 14px;padding-left:12px;border-left:2px solid rgba(212,168,83,.15)}
+.ss h4{font-size:13px;font-weight:600;color:var(--gold2);margin-bottom:5px}
+.ss p,.ss li{font-size:12px;color:var(--tx2);line-height:1.7;margin-bottom:3px}
+.ss ul{list-style:none;padding:0}.ss ul li::before{content:'→ ';color:var(--gd)}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.cc{background:linear-gradient(135deg,var(--bg3),var(--bg2));border:1px solid var(--br);border-radius:12px;padding:22px;position:relative;overflow:hidden}
+.cc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
+.cc:nth-child(1)::before{background:var(--gold)}.cc:nth-child(2)::before{background:var(--ac)}.cc:nth-child(3)::before{background:var(--pr)}.cc:nth-child(4)::before{background:var(--gn)}.cc:nth-child(5)::before{background:var(--bl)}.cc:nth-child(6)::before{background:var(--or)}
+.cc .nb2{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:rgba(212,168,83,.08);position:absolute;top:8px;right:16px}
+.cc h4{font-size:13px;color:var(--gold2);margin-bottom:6px}.cc p{font-size:12px;color:var(--tx2);line-height:1.7}
+.qt{background:var(--bg3);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;margin:12px 0;font-size:13px;color:var(--tx);font-style:italic;line-height:1.8}
+.dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.dc{background:var(--bg3);border:1px solid var(--br);border-radius:8px;padding:16px}
+.dc h4{font-size:12px;color:var(--gold);margin-bottom:5px}.dc p{font-size:11px;color:var(--tx2);line-height:1.6}
+.wg{columns:2;column-gap:12px}
+@media(max-width:700px){.wg{columns:1}.rg,.gg,.dg,.cg{grid-template-columns:1fr}.fl{flex-direction:column}.fa{transform:rotate(90deg)}}
+.wi{break-inside:avoid;background:var(--bg3);border:1px solid var(--br);border-radius:8px;padding:14px 18px;margin-bottom:12px;font-size:12px;line-height:1.7;transition:.3s}
+.wi:hover{border-color:var(--gd)}
+.wi .wn{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gd);display:block;margin-bottom:3px}
+.si{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;background:var(--bg3);border:1px solid var(--br);border-radius:8px;margin-bottom:8px}
+.sn{width:30px;height:30px;background:rgba(212,168,83,.12);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;flex-shrink:0}
+.si h4{font-size:13px;font-weight:600;margin-bottom:3px}.si p{font-size:11px;color:var(--tx2);line-height:1.6}
+.bg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.bc{background:var(--bg3);border:1px solid var(--br);border-radius:10px;padding:20px;text-align:center}
+.bc .em{font-size:28px;margin-bottom:8px}.bc h4{font-size:13px;color:var(--gold);margin-bottom:5px}.bc p{font-size:11px;color:var(--tx2)}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-badge">Trading Holy Grail · 완전판</div>
+  <h1>The Complete<br>Trader's Guide</h1>
+  <h2>Jeff Sun, CFTe · 16년간의 손절, 고통, 끈기 → $10M 멀티에셋<br>트윗 실제 내용 전부 포함 구조화</h2>
+  <div class="hero-stats">
+    <div class="hs"><div class="n">16+</div><div class="l">Years</div></div>
+    <div class="hs"><div class="n">17</div><div class="l">Chapters</div></div>
+    <div class="hs"><div class="n">14</div><div class="l">Screeners</div></div>
+    <div class="hs"><div class="n">180%</div><div class="l">KC Trade</div></div>
+    <div class="hs"><div class="n">$10M+</div><div class="l">Real Estate</div></div>
+    <div class="hs"><div class="n">24.8%</div><div class="l">Win Rate YTD</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <button class="nb on" onclick="go(0)">📖 개요</button>
+  <button class="nb" onclick="go(1)">1·용어</button>
+  <button class="nb" onclick="go(2)">2·차트</button>
+  <button class="nb" onclick="go(3)">3·스크리너</button>
+  <button class="nb" onclick="go(4)">4·프로세스</button>
+  <button class="nb" onclick="go(5)">5·프리마켓</button>
+  <button class="nb" onclick="go(6)">6·실행</button>
+  <button class="nb" onclick="go(7)">7·관리</button>
+  <button class="nb" onclick="go(8)">8·저널</button>
+  <button class="nb" onclick="go(9)">9·확신</button>
+  <button class="nb" onclick="go(10)">10-12</button>
+  <button class="nb" onclick="go(11)">13-14</button>
+  <button class="nb" onclick="go(12)">15-16</button>
+</div></div>
+
+<div class="ct">
+
+<!-- ===== CH0: OVERVIEW ===== -->
+<div class="ch on" id="c0">
+<div class="ch-hd"><div class="ch-n">Overview</div><div class="ch-t">Jeff Sun, CFTe — 전체 구조 & 배경</div></div>
+
+<div class="cd">
+<h3>👤 Jeff Sun 프로필</h3>
+<p>싱가포르 기반(GMT+8) 풀타임 트레이더. 매일 오전 8:30 전 기상, 프리마켓 작업을 미국 시장 개장(오후 9:30 GMT+8) 전 점심 전에 완료. 오전 2:30 전 취침하여 미국 점심 세션 이후 시장가 주문 체결을 습관적으로 피함. 평일 저녁은 트레이딩 우선, 사교 활동 최소화 — 거의 10년간 평일 저녁 술자리에 간 적이 없다고 밝힘.</p>
+<p style="margin-top:8px;">비공개 펀드 운영: 글로벌 매크로 전략 펀드로부터 직접 클로즈드엔드 투자를 수락, 1인 LLC로 펀드 매니지먼트 여정 시작. 성과보수 기반, 단일 보고 대상. 코스/서비스 판매 없음. 인터뷰 거절. 두 분리된 은퇴 부모님의 생활비와 레버리지 부동산 포트폴리오 성장을 트레이딩으로 지원.</p>
+<p style="margin-top:8px;">현재 40세 전 특정 순자산 수준 달성을 목표로 고도의 동기부여 상태. Substack 15K+ 구독자 (2년 비활성 중에도 10K→15K 성장). USIC 2023 소형주 부문 2위로 시작.</p>
+</div>
+
+<div class="cd">
+<h3>🔑 핵심 철학</h3>
+<div class="qt">"프로세스에 대한 몇 가지 간단한 조정이 자산곡선을 크게 변화시키고 장기 복리를 강화한다. 트레이딩은 단기 수입원이 아닌 장기 성장 게임이다."</div>
+<p style="margin-top:8px;"><strong style="color:var(--gold)">YTD 승률 24.8% (15년 중 최저)</strong>임에도 <strong>YTD 성과 +49% 실현 (+54.5% 미실현)</strong> 달성. 이것이 바로 승률이 아닌 R-Multiple 관리와 손실 통제가 핵심이라는 증거.</p>
+</div>
+
+<div class="cd">
+<h3>🗺️ 17개 챕터 구조</h3>
+<div class="gg">
+<div class="gi"><div class="gt">Ch 1</div><div class="gd">용어집 — LoD, RVOL, T+3, VARS, VCP, PEAD 등</div></div>
+<div class="gi"><div class="gt">Ch 2</div><div class="gd">차팅 — TradingView 5대 핵심 지표 상세</div></div>
+<div class="gi"><div class="gt">Ch 3</div><div class="gd">스크리너 — 14개 포스트마켓 + 2개 라이브마켓</div></div>
+<div class="gi"><div class="gt">Ch 4</div><div class="gd">프로세스 — Screening→Watchlist→Focus List</div></div>
+<div class="gi"><div class="gt">Ch 5</div><div class="gd">프리마켓 루틴 — Top-Down 상황인식</div></div>
+<div class="gi"><div class="gt">Ch 6</div><div class="gd">실행 — 15개 하드룰 + 3-Stop Strategy</div></div>
+<div class="gi"><div class="gt">Ch 7</div><div class="gd">포스트 실행 — Qullamaggie 3대 황금 규칙</div></div>
+<div class="gi"><div class="gt">Ch 8</div><div class="gd">저널링 — 빅데이터 게임, 7파트 모니터링</div></div>
+<div class="gi"><div class="gt">Ch 9</div><div class="gd">확신 — 내면화할 6가지 그래픽</div></div>
+<div class="gi"><div class="gt">Ch 10</div><div class="gd">풀타임 트레이딩 — 27포스트 냉혹한 진실</div></div>
+<div class="gi"><div class="gt">Ch 11</div><div class="gd">추천 도서 5권</div></div>
+<div class="gi"><div class="gt">Ch 12</div><div class="gd">무료 생산성 도구 40+개</div></div>
+<div class="gi"><div class="gt">Ch 13</div><div class="gd">3년 지연시킨 잘못된 학습 + 추천 팔로우</div></div>
+<div class="gi"><div class="gt">Ch 14</div><div class="gd">63개 성찰 트윗</div></div>
+<div class="gi"><div class="gt">Ch 15</div><div class="gd">영감의 부름 — 부동산 $10M+ 증거</div></div>
+<div class="gi"><div class="gt">Ch 16</div><div class="gd">FAQ + 주요 시장 일정</div></div>
+</div>
+</div>
+</div>
+
+<!-- ===== CH1: GLOSSARY ===== -->
+<div class="ch" id="c1">
+<div class="ch-hd"><div class="ch-n">Chapter 01</div><div class="ch-t">용어집 (Glossary)</div><div class="ch-s">Jeff Sun이 트위터에서 자주 사용하는 용어 — 실제 정의와 활용법</div></div>
+<div class="gg">
+<div class="gi"><div class="gt">LoD (Low of Day)</div><div class="gd"><strong>그 시점의</strong> 장중 최저가. 종가 차트가 아닌 개장 초반 실시간으로 결정되는 값. 진입 시 LoD 거리가 ATR의 60%를 초과하면 진입하지 않음 — "스프링 코일이 이미 늘어난 상태"와 같다.</div></div>
+<div class="gi"><div class="gt">RVOL (Relative Volume)</div><div class="gd">평균(보통 50일) 대비 상대 거래량. 강한 매수의 첫 번째 증거. RVOL 기반 ORH 진입은 통계적 엣지가 입증됨. "RVOL 밖에서 가격은 항상 페이드된다." 높은 RVOL 정의가 어려우면 Projected Volume에서 50% 헤어컷 적용.</div></div>
+<div class="gi"><div class="gt">T+3 프레임워크</div><div class="gd">T=체결일, +1=1일후, +3=3일후 (주말/공휴일 제외). T+3까지 3-Stop을 유지하고, T+3에 33% 사이즈다운 또는 부분 익절. T+3 이후 모든 스탑을 손익분기점으로 통합. 이후 10-MA를 멘탈 스탑으로 사용.</div></div>
+<div class="gi"><div class="gt">VARS</div><div class="gd">Volatility Adjusted Relative Strength. 전통적 RS가 각 종목의 고유 변동성을 반영하지 못하는 한계를 보완. 변동성이 높은 종목의 RS가 과대평가되는 것을 조정하여 더 정확한 상대강도 측정.</div></div>
+<div class="gi"><div class="gt">R-Multiple</div><div class="gd">초기 리스크(진입가-손절가) 대비 수익배수. "+16R"은 리스크의 16배 수익. Jeff의 스타일: 1개 승리 트레이드가 13연패를 커버. Quallamaggie의 RGTI 트레이드는 +40-80R 달성.</div></div>
+<div class="gi"><div class="gt">X×ATR% from 50-MA</div><div class="gd">50일 이동평균에서 ATR% 배수만큼 이격된 정도. 공식: A=ATR%=$ATR/$Last Price, B=50-MA 대비 % 상승, B/A=ATR% 배수. 7-10x 도달 시 부분 익절 시작. 4x 초과 시 신규 진입 금지. PLTR, SOFI, TSLA, VRT, NVDA가 10x 초과 후 정체/하락한 사례.</div></div>
+<div class="gi"><div class="gt">VCP</div><div class="gd">Volatility Contraction Pattern (Mark Minervini). 워치리스트→포커스리스트 업그레이드에 반드시 가격(또는 가격+거래량) 수축이 필요. 모든 지속 가능한 가격 확장은 수축 국면이 선행. <strong>느슨한 가격 행동의 주식에는 절대 진입하지 않음.</strong></div></div>
+<div class="gi"><div class="gt">PEAD</div><div class="gd">Post-Earnings Announcement Drift. 어닝 서프라이즈 방향으로 주가가 발표 후 한동안 계속 드리프트하는 시장 이상현상. 시장의 지연된 반응을 활용하는 기회 제공.</div></div>
+<div class="gi"><div class="gt">M30 Re-ORH</div><div class="gd">개장 후 30분 이내 시가범위 고점(ORH) 재탈환. Jeff는 보통 개장 30분 후 진입을 지연시키며, 이 시점에서 ORH 재탈환+높은 RVOL이 동시에 나타나면 강한 진입 시그널.</div></div>
+<div class="gi"><div class="gt">ADR% vs ATR</div><div class="gd">ADR=Average Daily Range (고가-저가 기반), ATR=Average True Range (갭 포함 진폭). 높은 ADR% 종목은 모멘텀이 존재하며 더 강한 가격 확장이 바로 앞에 있을 수 있음을 의미. Quallamaggie는 항상 기초자산보다 레버리지 ETF 선호.</div></div>
+<div class="gi"><div class="gt">ORH (Opening Range High)</div><div class="gd">장중 시가범위의 고점. RVOL 기반 ORH 진입은 통계적 우위가 입증된 전략. Adam H. Grimes가 2015년에 이 개념을 설명했고, Jeff의 트윗을 본 후 2025년에 추가 글을 작성.</div></div>
+<div class="gi"><div class="gt">Pocket Pivot</div><div class="gd">하락 거래량 중 최근 10일 내 최고 하락일 거래량을 상승일에 돌파하는 패턴. Jeff가 사용하는 Simple Volume with Pocket Pivots 스크립트(@finallynitin)의 핵심 요소.</div></div>
+</div>
+</div>
+
+<!-- ===== CH2: CHARTING ===== -->
+<div class="ch" id="c2">
+<div class="ch-hd"><div class="ch-n">Chapter 02</div><div class="ch-t">차팅 — TradingView 5대 핵심 지표 상세</div><div class="ch-s">2023→2024→2025 진화한 무료 인디케이터. 실제 사용법과 해석 방법까지.</div></div>
+
+<div class="ic">
+<h3>① Swing Data (ADR%/RVol/PVol/Float%/Avg$Vol) — 75,000+ 사용자</h3>
+<div class="ss">
+<h4>🔹 ADR% 활용법</h4>
+<ul>
+<li><strong>추세추종 vs 레인지 확장:</strong> 주식이 추세를 따라 일정하게 움직이는지, 아니면 갑작스런 범위 확장으로 움직이는지 ADR%로 구분. 자신의 트레이딩 스타일에 맞는 ADR% 행동 패턴을 선택해야 함.</li>
+<li><strong>포지션 사이징 이점:</strong> 높은 ADR% 종목은 같은 % 리스크로 더 큰 포지션을 잡을 수 있음. ADR% 2% 종목 vs 5% 종목의 자본 배분 필요량이 크게 다름.</li>
+<li><strong>ADR% 레벨별 자본 배분:</strong> ADR% 3% → 약 33% 자본, ADR% 5% → 약 20% 자본, ADR% 8%+ → 약 12% 자본 (대략적 추정치)</li>
+<li><strong>Quallamaggie 원칙:</strong> 기초자산의 레버리지 ETF가 존재하면 항상 그것을 선택. 이유: 더 높은 ADR% = 더 큰 움직임 포착 가능. 레버리지 ETF 전체 목록을 월간 업데이트하여 관리.</li>
+</ul>
+</div>
+<div class="ss">
+<h4>🔹 LoD ATR 거리 — 핵심 실행 개념</h4>
+<p>Jeff의 가장 핵심적인 실행 규칙 중 하나. 실시간 시장에서 LoD(그 시점의 저가)가 ATR 대비 어느 위치인지를 측정:</p>
+<ul>
+<li><strong>"60% ATR below LoD" 의미:</strong> 개장 초반 차트에서 현재가에서 LoD까지의 거리가 ATR의 60% 이내여야 진입. 종가 차트로는 판단 불가 — 실시간 의사결정 시점의 값.</li>
+<li><strong>ATR을 스프링 코일로 시각화:</strong> LoD 거리가 작을수록 스프링이 압축된 상태 = 반등 에너지가 크다. 60% 이상이면 이미 스프링이 풀린 상태.</li>
+<li><strong>USIC 2023 2위 진입 근거:</strong> 소형주, 높은 거래량 회전율(시가총액 대비), 브레이크아웃 레벨에서 LoD가 60% ATR 미만인 종목만 선별.</li>
+<li><strong>핵심 결과:</strong> "LoD 거리가 작은 진입은 당일 미실현 수익으로 마감할 확률이 높다. 진입가 근처에서 마감하는 것이 아니라."</li>
+</ul>
+</div>
+<div class="ss">
+<h4>🔹 RVOL — 진입 확인의 핵심</h4>
+<ul>
+<li><strong>+180% KC 트레이드 실전:</strong> KC가 2주간 기술적 삼각형 패턴과 컨솔리데이션 레인지를 돌파. 개장 10분 만에 RVOL 40% 기록 → 강한 매수 확인 → 진입. 6주 만에 +180% 달성.</li>
+<li><strong>통계적 엣지:</strong> RVOL 기반 ORH 진입은 시장에서 입증된 통계적 우위를 보유.</li>
+<li><strong>손실 방지:</strong> "RVOL 기반 진입 규칙이 매년 수없이 많은 불필요한 손절을 방지해왔다." RVOL이 없으면 가격은 항상 페이드.</li>
+<li><strong>높은 RVOL 정의 어려울 때:</strong> 스크립트 내 Projected Volume에서 50% 헤어컷(할인) 적용하여 기준 설정.</li>
+</ul>
+</div>
+<div class="ss">
+<h4>🔹 Avg $ Volume & 슬리피지</h4>
+<p><strong>"2021년 슬리피지와 스프레드 확대가 총 자산의 6-7% 비용을 초래했다."</strong> 유동성이 낮은 종목의 실행 비용이 얼마나 치명적인지를 보여주는 실제 데이터. 이후 유동성 기준을 강화.</p>
+</div>
+<div class="ss">
+<h4>🔹 시가총액 · 저유통주식% · 공매도비율</h4>
+<p>2018-2024년 100%+ 수익 달성 종목 Top 100 분석 결과:</p>
+<ul>
+<li>45/100개가 평균 거래량 100만주 초과 (60일)</li>
+<li>96%가 ADR% 2% 이상</li>
+<li>89%가 ADR% 3% 이상</li>
+<li>60%가 ADR% 4% 이상</li>
+<li>36%가 ADR% 5% 이상</li>
+<li><strong>최고 % 수익자들은 거의 항상 높은 ADR%, 낮은 유통주식%, 적절한 공매도비율을 보유</strong></li>
+</ul>
+</div>
+</div>
+
+<div class="ic">
+<h3>② ATR% Multiple from 50-MA — 47,000+ 사용자</h3>
+<div class="ss">
+<h4>🔹 공식과 핵심 원리</h4>
+<p><strong>공식:</strong> A = ATR% = $ATR / $Last Price, B = 50-MA 대비 % 상승률, <strong>B ÷ A = ATR% 배수</strong></p>
+<p>단순 % 이격과의 차이: ATR% 배수는 <strong>변동성을 반영</strong>. ADR% 2% 종목의 10% 이격은 5x 배수, ADR% 5% 종목의 10% 이격은 2x 배수 → 같은 % 이격이라도 의미가 완전히 다르다.</p>
+<ul>
+<li><strong>7-10x ATR% 도달 시:</strong> 부분 익절 시작. "내가 가장 좋아하는 강세 속 부분 익절 지표."</li>
+<li><strong>4x 초과 시:</strong> 신규 진입 금지 (하드룰 #2). 50-MA에서의 거리를 "발사대"로 시각화 — 발사대에서 멀수록 R 잠재력이 작다.</li>
+<li><strong>10x 압축 사례 (LIF):</strong> 10x ATR% 압축이 풀백 없이 고가에서 전개 가능. LIF는 10주 후 추가 상승.</li>
+<li><strong>절대 추격 금지:</strong> MSOS 2025년 8월(이미 연장) vs 9월(돌아옴) 사례 — "이미 움직인 연장된 트레이드는 절대 추격하지 마라, 반드시 돌아온다."</li>
+<li><strong>인덱스 적용:</strong> 6-7x ATR% 배수를 인덱스에 적용하면 과매수/과매도 시그널로 활용 가능. 2025년 4월 7일 바닥 롱 진입의 근거.</li>
+</ul>
+</div>
+<div class="ss">
+<h4>🔹 13년 연구 결과 (Denis Hamel, 2025.9.25)</h4>
+<p>2012-2025년, 5,506개 미국 주식, ~5천만 주식-일 데이터에 대한 ATR 이격 연구. Jeff의 ATR% 배수 개념의 학술적 뒷받침.</p>
+</div>
+</div>
+
+<div class="ic">
+<h3>③ VARS (Volatility Adjusted Relative Strength) — 5,000+ 사용자</h3>
+<div class="ss">
+<ul>
+<li>전통적 RS의 한계: 변동성이 높은 종목이 RS에서 과대평가되는 문제</li>
+<li>VARS는 각 종목 고유의 변동성으로 조정하여 더 정확한 상대강도 측정</li>
+<li>Reddit의 2023년 mattishenner 스레드에서 유사한 논의 발견 후 발전</li>
+<li>2025년 10월 히스토그램 포함 버전 공개</li>
+<li><strong>핵심 원칙: "Relative Strength First, Setup Second"</strong> — 포커스리스트 업그레이드 시 상대강도가 셋업보다 우선</li>
+</ul>
+</div>
+</div>
+
+<div class="ic">
+<h3>④ Simple Volume with Pocket Pivots (@finallynitin)</h3>
+<div class="ss">
+<p>"다양한 무료 볼륨 스크립트를 시도했지만, 이것이 가장 단순하면서도 필요한 모든 것을 갖추고 있다."</p>
+<ul>
+<li><strong>강한 단일 거래일의 파괴력:</strong> "강한 가격 움직임+높은 거래량의 단 하루가 3개월 가격 행동의 내러티브와 바이어스를 재구성할 수 있다."</li>
+<li>Pocket Pivot: 하락 거래량 중 최근 10일 내 최고 하락일 거래량을 상승일에 돌파하는 패턴 감지</li>
+</ul>
+</div>
+</div>
+
+<div class="ic">
+<h3>⑤ 보조 지표 (별도 템플릿)</h3>
+<div class="ss">
+<ul>
+<li><strong>EPS & Sales (@Fred6724):</strong> 펀더멘털 오버레이. 마켓스미스 모델을 TradingView에서 무료로 재현.</li>
+<li><strong>Industry Group Strength (@amphtrading):</strong> 산업그룹 강도 측정. Jeff는 이를 "산업그룹 레벨에서의 Top-Down 분석"에 활용.</li>
+<li><strong>TradingView Seasonality Table (2025):</strong> 시즌널리티 분석용</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- ===== CH3: SCREENERS ===== -->
+<div class="ch" id="c3">
+<div class="ch-hd"><div class="ch-n">Chapter 03</div><div class="ch-t">14개 포스트마켓 + 2개 라이브마켓 스크리너</div><div class="ch-s">Finviz (포스트마켓) & TradingView (프리/라이브마켓 RVOL) 워크플로 전체 공개</div></div>
+
+<div class="cd" style="border-color:rgba(78,205,196,.3)">
+<h3 style="color:var(--ac)">💡 스크리닝의 본질</h3>
+<div class="qt">"스크리닝은 제네릭 워치리스트만 만든다. 액션 가능한 아이디어는 워치리스트 관리 이후에야 나온다. 많은 액션 가능한 주식이 스캔에 나타난 당일이 아닌, 며칠 또는 몇 주 후에 기회를 제공한다."</div>
+<p style="margin-top:8px;">"알파 생성에 어려움을 겪고 있다면, 프로세스나 스크린을 재평가하라. 시장에 동조되어 있다면, 잘못된 타이밍에 시장 밖에 있지 않을 것이다."</p>
+</div>
+
+<div class="sd">14 POST-MARKET SCREENERS</div>
+
+<div class="si"><div class="sn">1</div><div><h4>CANSLIM 기반 스크리너 <span class="tg">190만+ 트위터 노출</span></h4><p>TradingView/Finviz 버전. 2025년 'Institutional Transaction' 필터 추가. Finviz 모바일 웹 스크리너로 직장에서도 활용 가능.</p></div></div>
+<div class="si"><div class="sn">2</div><div><h4>High ADR% Hottest Stock 스크리너</h4><p>높은 ADR% 모멘텀 종목. Quallamaggie 스타일(2003-2004 TASR) 버전: 높은 ADR%, 낮은 유통주식%, 높은 거래량 회전율.</p></div></div>
+<div class="si"><div class="sn">3</div><div><h4>+180% KC 영감 스크리너 — 연장된 베이스</h4><p>Cup & Handle 등 장기 컨솔리데이션 패턴. 핵심 질문: "이 종목이 더 오르고 싶어하는가?" 수축이 충분히 진행된 종목만 필터.</p></div></div>
+<div class="si"><div class="sn">4</div><div><h4>Strongest Mover (1주/1개월/3개월/6개월)</h4><p>Finviz 파라미터: 1주 20%+, 1개월 30%/50%+, 3개월 50%+, 6개월 100%+. 강한 시장에서는 기준을 높여 최강 종목만 필터. "좋은 스캔은 60개 미만의 결과를 산출해야 한다."</p></div></div>
+<div class="si"><div class="sn">5</div><div><h4>IPO 스크리너 (주간)</h4><p>Finviz만 가능한 IPO 필터링 파라미터. 주간 주기로 실행.</p></div></div>
+<div class="si"><div class="sn">6</div><div><h4>High Short Float 스크리너 (주간)</h4><p>높은 공매도 비율 종목. Finviz 전용 파라미터.</p></div></div>
+<div class="si"><div class="sn">7</div><div><h4>Liquid ETF 스크리너</h4><p>"상관된 주식 너머 트레이딩 가능한 자산군 탐색은 가치있는 엣지를 제공" (Druckenmiller). 레버리지 ETF 트레이딩이 Jeff의 "빵과 버터" — 가장 큰 RRR 트레이드가 이 영역에서 발생.</p></div></div>
+<div class="si"><div class="sn">8</div><div><h4>Screen within Screen (워치리스트 내 스크리닝)</h4><p>TradingView 워치리스트 내 2차 스크리닝으로 타이트닝 된 종목 발견. "이 기능을 발견한 후 일일 스크리닝 루틴을 크게 최적화할 수 있었다."</p></div></div>
+<div class="si"><div class="sn">9</div><div><h4>Liquid Mega Cap 고정 워치리스트</h4><p>$1B+ 평균 달러 거래량 종목 고정 목록 + 합성 레버리지 ETF 매핑. 이 리스트 내 기회 식별: "상대강도가 돌출되는 종목을 포착하여 레버리지 ETF로 실행."</p></div></div>
+
+<div class="cd" style="margin-top:16px">
+<h3>📋 일일 스크리닝 워크플로 (3분 비디오 요약)</h3>
+<p>12개 스윙 트레이딩 스캔 결과를 각각의 워치리스트로 이동. 대부분 주간 실행 (일일 결과의 반복성 때문). 'Scan Result' 워치리스트만 주간 리프레시(삭제 후 재구축). 주말에는 각 개별 워치리스트의 모든 주식을 한 차트씩 철저히 검토. Finviz 스크리너→TradingView 워치리스트→'Compression' 스크리너 통합으로 포커스 아이디어 생성.</p>
+</div>
+
+<div class="sd">2 LIVE-MARKET SCREENERS</div>
+<div class="cd">
+<h3>📡 라이브 마켓 RVOL 모니터링</h3>
+<p>① <strong>포커스 리스트 기반:</strong> 사전 준비된 종목의 실시간 RVOL 감시. 가격 알림이 트리거되면 RVOL 확인 후 진입 결정.<br>
+② <strong>프리마켓 갭업 기반:</strong> 갭업 종목 중 높은 RVOL을 보이는 것만 필터.<br>
+③ <strong>실전 사례 (KOSS, 2024.7.3):</strong> 개장 시 극도로 높은 RVOL이 나타나 즉시 포착 → 진입 실행. "개장 시 내가 찾는 높은 RVOL의 전형적 예시."</p>
+</div>
+</div>
+
+<!-- ===== CH4: PROCESS ===== -->
+<div class="ch" id="c4">
+<div class="ch-hd"><div class="ch-n">Chapter 04</div><div class="ch-t">Screening → Watchlist → Focus List 업그레이드</div><div class="ch-s">글로벌 워치리스트 142개 종목을 매일 검토, 50+ 레버리지 ETF 매일 검토</div></div>
+
+<div class="fl">
+<div class="fs">Screening<br><span style="font-size:10px;color:var(--tx2)">14개 스크리너</span></div>
+<div class="fa">→</div>
+<div class="fs">Global Watchlist<br><span style="font-size:10px;color:var(--tx2)">~142 종목</span></div>
+<div class="fa">→</div>
+<div class="fs">Stalk List<br><span style="font-size:10px;color:var(--tx2)">아직 이른 것들</span></div>
+<div class="fa">→</div>
+<div class="fs hl">Focus List<br><span style="font-size:10px;color:var(--tx2)">A등급만</span></div>
+<div class="fa">→</div>
+<div class="fs">Execution<br><span style="font-size:10px;color:var(--tx2)">RVOL 확인</span></div>
+</div>
+
+<div class="cd">
+<h3>📌 Stalk List → Focus List 업그레이드 기준</h3>
+<p>Stalk List는 글로벌 워치리스트에서 단기 베이스를 구축 중이지만 아직 충분히 무르익지 않은 종목들:</p>
+<ul>
+<li><strong>어닝 5일 이내:</strong> 진입 회피. 6일 이상 여유 있으면 고려 — 충분한 수익 쿠션 또는 어닝 전일 청산 여유.</li>
+<li><strong>가격 연화 중이지만 아직 느슨:</strong> 추가 가격 타이트닝 필요. "포커스 리스트의 레인지 수축을 기억하라."</li>
+<li><strong>10/20-MA가 아직 따라잡지 못함:</strong> 연화된 가격 행동에 이동평균이 수렴할 때까지 대기.</li>
+<li><strong>하락하는 200-MA로 접근 중:</strong> 하락하는 200-MA 아래 브레이크아웃은 역사적으로 처참하게 실패. 단, 3x ADR% 이상 거리가 있으면 포커스 리스트 업그레이드.</li>
+<li><strong>10/20-MA 아래이지만 근접 추적:</strong> 가격 알림 설정 (예: APLT $1.59에서 10-MA 재탈환 알림).</li>
+</ul>
+<p style="margin-top:8px;"><strong style="color:var(--gold)">당일 Stalk→실행 가능:</strong> 종목이 전일 종가에서 갭업하여 레인지 브레이크아웃 레벨을 초과했지만 LoD 거리가 여전히 타이트한 경우.</p>
+</div>
+
+<div class="cd">
+<h3>⭐ Focus List 핵심 자격 요건</h3>
+<div class="qt">"Relative Strength First, Setup Second. 상대강도가 항상 우선이다."</div>
+<ul>
+<li>① 어떤 형태든 <strong>VCP (가격 수축)</strong> 필수</li>
+<li>② <strong>강한 상대강도</strong> — VARS 또는 전통적 RS 기준</li>
+<li>③ <strong>높은 ADR%</strong> = 모멘텀 존재</li>
+<li>④ <strong>높은 RVOL로 촉발된 가격/거래량 이벤트</strong> (필수는 아님)</li>
+<li>⑤ <strong>단기 이동평균(10/20-MA) 위에서의 가격 수축</strong></li>
+<li>⑥ 기초 체력이 합법적이지 않아도 트레이딩 가능 (FFIE 2024 사례)</li>
+</ul>
+<p style="margin-top:8px;"><strong>KC 트레이드 상세 (2024, +180% in 6 weeks):</strong><br>
+① 2주간 기술적 삼각형 패턴과 컨솔리데이션 레인지 돌파<br>
+② 개장 10분 만에 RVOL 40% — 강한 매수 확인<br>
+③ LoD가 겨우 40% (60% 이상이면 스킵)<br>
+④ T+3에 33% 사이즈다운, 모든 스탑을 손익분기점으로 통합<br>
+⑤ 포지션 보유 → +180% 달성</p>
+</div>
+
+<div class="cd">
+<h3>📋 워치리스트 관리 — 변동성 높을 때가 기회</h3>
+<p><strong>"시장 변동성이 높아지면, 워치리스트 관리를 극도로 활발하게 유지하라. 연중 가장 수익성 높은 기회일 수 있다."</strong></p>
+<p>• 워치리스트가 어려우면 <strong>3세트로 분할, 일별 로테이션</strong><br>
+• 'Back Watchlist' — 스크리너 보정용 아이디어 보관소<br>
+• 내구성 포트폴리오 구축 후: 기존 포지션 추가매수 우선, 새 노출은 극도로 선별적<br>
+• 부분 익절이나 청산을 의심하지 마라: "10-MA 매도 규칙이 5개월까지 앉혀줄 수 있다."</p>
+</div>
+</div>
+
+<!-- ===== CH5: PRE-MARKET ===== -->
+<div class="ch" id="c5">
+<div class="ch-hd"><div class="ch-n">Chapter 05</div><div class="ch-t">프리마켓 루틴 & 상황인식 (Situational Awareness)</div><div class="ch-s">"낮은 타임프레임일수록 더 많은 헌신이 필요하다" — 루틴은 시간효율적이고 지속가능해야</div></div>
+
+<div class="cd">
+<h3>⏰ 프리마켓 루틴 (개장 30분 전, 4가지 도구)</h3>
+<ul>
+<li><strong>가격 알림 확인:</strong> TradingView에서 포커스리스트 종목에 설정. "가격 알림은 시장의 느낌도 준다" — 다수 알림이 한 방향으로 트리거되면 시장 모멘텀 감지.</li>
+<li><strong>경제 캘린더:</strong> 빨간색(고영향)과 주황색(중영향) 뉴스 항목 확인. 노란색은 스윙 트레이더에게 큰 영향 없어 무시.</li>
+<li><strong>선물/프리마켓:</strong> 인덱스 선물과 프리마켓 갭 방향 확인.</li>
+<li><strong>브레드쓰 지표:</strong> 전일 종가 기준 시장 내부 강도 재확인.</li>
+</ul>
+<p style="margin-top:8px;"><strong>어닝 트레이드 시:</strong> EOD 가격 행동의 6가지 결과를 이해해야 함 — 갭업+유지, 갭업+반전, 갭업+추가상승, 갭다운+유지, 갭다운+반등, 갭다운+추가하락.</p>
+</div>
+
+<div class="cd">
+<h3>📊 Top-Down 상황인식 — 5단계</h3>
+<p><strong>1단계: 단기 브레드쓰 ($MMTW)</strong></p>
+<p>$MMTW = 20-MA 위 주식 비율. 50% 이상이면서 10-MA가 20-MA 위에 있으면 강세 바이어스. Jeff가 역사적 데이터를 추출하여 이 임계값의 유효성을 검증.</p>
+
+<p style="margin-top:10px"><strong>2단계: NH/NL (52주 신고-신저)</strong></p>
+<p>Nasdaq/NYSE/AMEA의 일간 52주 신고-신저 차이. barchart.com에서 가장 포괄적 데이터 제공. "강화되는 브레드쓰는 반드시 산업그룹 1개월 RS 신고 증가와 동반되어야 한다."</p>
+
+<p style="margin-top:10px"><strong>3단계: 시장 레벨 (RSP/QQQE/IWM)</strong></p>
+<p>RSP(SPY 등가중), QQQE(QQQ 등가중): 시가총액가중보다 균형있는 시장 성과 표현. RSP/SPY 비율 약세 = 등가중 약세 = 광범위한 시장 약세 조기 감지. IWM: 소형주 2000개, 국내 경제에 더 민감하여 SPY/QQQ의 선행 지표 역할.</p>
+
+<p style="margin-top:10px"><strong>4단계: 섹터 레벨 (11개 SPDR)</strong></p>
+<p>52주 저가 대비 % 상승으로 강도 비교, 52주 고가 대비 % 하락으로 약세 비교. ADR%가 섹터마다 다르므로(XLE 2.09% vs XLP 0.84%) 단순 비교에 한계. <strong>5개 핵심 섹터</strong>에 특별 주목.</p>
+
+<p style="margin-top:10px"><strong>5단계: 산업그룹 레벨</strong></p>
+<p>Druckenmiller의 지표: 주택건설업체 (Homebuilders). 산업그룹 강도 측정에 @amphtrading의 Industry Group Strength 인디케이터 활용. 자체 RS 히스토그램 스프레드시트(무료, 구글 시트 버전도 공유) 구축 — 종가 후 자동 업데이트.</p>
+</div>
+
+<div class="cd" style="border-color:rgba(46,204,113,.3)">
+<h3>🎯 ATR% 배수로 인덱스 과매수/과매도 읽기</h3>
+<p><strong style="color:var(--rd)">과매수 (2024.3):</strong> 인덱스가 역사적 ATR% 배수 확장 → 2주 매도세 시작 전 포착.</p>
+<p><strong style="color:var(--gn)">과매도 (2025.4.7):</strong> 인덱스가 역사적 ATR% 배수 과매도 → <strong>정확히 바닥에서 롱 진입.</strong> 트위터에서 강한 반발에도 불구하고 상세 breakdown 공유. 2025.3.28에는 같은 원리로 시장 숏 진입.</p>
+<p style="margin-top:8px;"><strong>자기 검증법:</strong> "모든 트레이드(승/패)를 인덱스 차트에 표시해보라. 상황인식을 객관적으로 평가할 수 있다."</p>
+</div>
+</div>
+
+<!-- ===== CH6: EXECUTION ===== -->
+<div class="ch" id="c6">
+<div class="ch-hd"><div class="ch-n">Chapter 06</div><div class="ch-t">15개 하드룰 + 3-Stop Strategy 완전 해부</div><div class="ch-s">"놀라운 아이디어도 라이브 마켓에서 그 순간의 가격 행동 기반 리스크-보상을 재평가해야"</div></div>
+
+<div class="sd">15 HARD RULES — 상세 내용</div>
+<div class="rg">
+<div class="rl"><span class="rn">#1</span><strong>LoD > 60% ATR이면 진입 금지.</strong> ATR을 스프링 코일로 시각화. LoD가 이미 ATR의 60% 이상 내려갔으면 "스프링이 이미 풀린 상태" — 반등 에너지 부족. 당일 미실현 수익으로 마감할 확률 낮음.</div>
+<div class="rl"><span class="rn">#2</span><strong>50-MA에서 4x ATR% 배수 초과 시 진입 금지.</strong> 50-MA에서의 거리를 "발사대"로 시각화. 발사대에서 너무 멀면 R 잠재력이 급감. 이미 연장된 트레이드는 반드시 돌아온다.</div>
+<div class="rl"><span class="rn">#3</span><strong>바이오텍 완전 제외.</strong> 갭 리스크를 트레이딩 데이터에서 제거. FDA 승인/거절 등 예측 불가한 갭. 노출이 필요하면 IBB/XBI → LABD/LABU ETF만.</div>
+<div class="rl"><span class="rn">#4</span><strong>메가캡/리퀴드 ETF 외에 실질적 RVOL 없으면 진입 금지.</strong> "RVOL 없이 가격은 항상 페이드." 볼륨 확인 없는 진입은 노이즈에 불과.</div>
+<div class="rl"><span class="rn">#5</span><strong>개장 30분 진입 지연.</strong> 극도로 높은 RVOL이 즉시 나타나지 않는 한. 개장 초반 노이즈 회피 + ORH 형성 대기.</div>
+<div class="rl"><span class="rn">#6</span><strong>주요 경제 데이터 직전, 어닝 발표 전후 진입 금지.</strong> 이벤트 기반 갭 리스크 제거.</div>
+<div class="rl"><span class="rn">#7</span><strong>하락하는 200-MA에 역행 진입 금지.</strong> "이것은 항상 발생한다" — 200-MA가 하락 추세면 브레이크아웃 실패율 극도로 높음.</div>
+<div class="rl"><span class="rn">#8</span><strong>즉각적인 갭 저항 구간으로 진입 금지.</strong> 갭으로 형성된 저항은 강력한 공급 구간.</div>
+<div class="rl"><span class="rn">#9</span><strong>세션당 최대 3개 신규 포지션.</strong> 전일 진입 모멘텀이 확인되면 리스크를 롤링. 한 번에 과다 노출 방지.</div>
+<div class="rl"><span class="rn">#10</span><strong>절대 추격하지 않음.</strong> 하루 늦어도 최적 진입점에서만. "놓친 트레이드는 파산시키지 않지만, 추격은 자주 그렇다." PSIX 사례: 최적 진입을 놓쳤으면 절대 추격하지 않는다.</div>
+<div class="rl"><span class="rn">#11</span><strong>연속 상승일이 많을수록 롱에 더 조심.</strong> 과매수 누적 리스크 증가.</div>
+<div class="rl"><span class="rn">#12</span><strong>내구성 포트폴리오(T+3 이상) 구축 후, 기존 포지션 추가매수 우선.</strong> "이미 손익분기 위에서 리딩하는 것이 증명된 포지션이므로."</div>
+<div class="rl"><span class="rn">#13</span><strong>갭업 시장 개장 시 추가 리스크 노출에 극도로 조심.</strong> 갭업 후 반전 리스크.</div>
+<div class="rl"><span class="rn">#14</span><strong>항상 '롱'만 실행.</strong> 숏 아이디어도 인버스 롱 합성 ETF로 (예: AMZN 숏 → AMZD 롱). 이유: 하방 리스크 제한, 마진 콜 방지.</div>
+<div class="rl"><span class="rn">#15</span><strong>트위터/X 구독자 전용 비공개 규칙.</strong> 널리 채택되는 것을 방지하기 위해 비공개.</div>
+</div>
+
+<div class="sd">3-STOP STRATEGY — 완전 해부</div>
+
+<div class="cd" style="border-color:rgba(212,168,83,.4)">
+<h3>🛡️ 3-Stop Strategy — Jeff Sun 독자 개발, 퀀트 펀드들이 채택</h3>
+<div class="qt">"승률이 40% 미만이면, 주요 초점은 손실 통제. 그래서 3-Stop Strategy를 개발했다 — 손실을 -1R이 아닌 -0.67R로 제한하면서 트레이드의 전체 결과에 크게 영향을 주지 않도록."</div>
+
+<p style="margin-top:12px"><strong>메커니즘 상세:</strong></p>
+<ul>
+<li><strong>Entry Day (T+0):</strong> 진입가에서 LoD까지의 거리를 3등분하여 33% 레벨마다 스탑 설정. 각 레벨에서 전체 사이즈의 33%씩 스탑.</li>
+<li><strong>Day 0-2:</strong> 수익이 2x R을 초과하면 33% 부분 익절. 3개 스탑 레벨 유지, 잔여 수량에 맞게 사이즈 조정.</li>
+<li><strong>Day 3 (T+3):</strong> 33% 사이즈다운 — 즉시 부분 익절 또는 follow-through 없지만 평균 진입가 위에 머무는 경우 리스크 축소. 모든 스탑을 <strong>손익분기점으로 통합</strong>.</li>
+<li><strong>4R 이상 도달 시:</strong> T+3 이전이라도 손익분기로 이동. "이 포물선적 시점에서 손실 구간(진입가 이하)을 방문하는 것은 말이 안 된다."</li>
+<li><strong>Day 4+:</strong> 10-MA를 멘탈 스탑으로 사용.</li>
+<li><strong>10-MA 아래 종가 시:</strong> 하드 스탑은 손익분기에 유지, 다음 날 첫 5분간 시장 거래 후 5분 ORL(시가범위 저점)로 하드 스탑 이동. ORL이 당일 관통되지 않으면 다음 개장 전 다시 손익분기로, 반복. "승리 트레이드를 최대한 오래 보유하면서 미실현 수익 희생 최소화."</li>
+</ul>
+
+<p style="margin-top:12px"><strong>8-10x ATR% 도달 시:</strong> 추가 33% 부분 익절. 진입일에 이 레벨에 도달하면 (싱가포르 시간대로 미국 장중 수면) 다음 개장에서 매도.</p>
+
+<p style="margin-top:12px"><strong>추가 개선 (풀타임 시):</strong> "미국 시장 시간에 장 마감 전 적극 모니터링이 가능하다면, 체결 당일(Day 0) 미실현 수익이 없는 신규 포지션을 50% 사이즈다운하겠다. 이것은 -0.67R보다 훨씬 더 R 손실을 줄인다."</p>
+
+<p style="margin-top:12px"><strong>재진입 사이징:</strong> R 손실을 -1R 이내로 유지하면서 재진입하는 구체적 사이징 방법론 (@pedma7 공유).</p>
+
+<p style="margin-top:12px"><strong style="color:var(--gold)">10연패 시나리오:</strong> 3-Stop으로 각 손실이 -0.67R이면, 10연패 = -6.7R. 일반 풀스탑(-1R)의 10연패 = -10R 대비 33% 절감. 자산 영향을 극적으로 줄임.</p>
+
+<p style="margin-top:12px"><strong>핵심 원칙:</strong> "시장이 포지션이 틀렸음을 증명하지 않았다면, 시장이 포지션이 맞음을 증명하지 못한 것일 수도 있다. (트레이드를 유지할 이유가 될 수 있다.)" 3-Stop은 <strong>의도된 손절 레벨을 방해하지 않는다</strong> — 단지 거기 도달하기 전에 사이즈를 줄일 뿐.</p>
+</div>
+</div>
+
+<!-- ===== CH7: POST EXECUTION ===== -->
+<div class="ch" id="c7">
+<div class="ch-hd"><div class="ch-n">Chapter 07</div><div class="ch-t">Qullamaggie 3대 황금 규칙 + 트레이드 관리</div><div class="ch-s">"가격 움직임에 고착되지 마라; 시간의 요소에 인내하라. 차트에는 y축과 x축 모두 있다."</div></div>
+
+<div class="cd">
+<h3>🥇 황금 규칙 #1: 항상 강세에서 일부를 팔아라</h3>
+<div class="qt">"강세에서 팔지 않으면, 약세에서 팔게 된다." — Oliver Kell</div>
+<p><strong>목적:</strong> ① 실현 수익을 잠금하여 미실현 수익 변동성 감소 ② 새로운 기회를 위한 자금 확보.</p>
+<p style="margin-top:6px"><strong>Jeff의 규칙:</strong> Day 0-2에 2R 초과 시 33% 매도. Day 3에 33% 사이즈다운. 8-10x ATR% 도달 시 추가 33%.</p>
+<p style="margin-top:6px"><strong>심리적 측면:</strong> "자산이 커지면(특히 절대 달러 리스크 허용치를 초과하면), 미실현 수익이 +$500,000에서 +$280,000으로 한 세션에 떨어지는 것을 감당하기 어렵다. 80% 포트폴리오 가동률로 8-10개 풀사이즈 트레이드를 감정적으로 감당할 수 있는 사람은 많지 않다."</p>
+<p style="margin-top:6px"><strong>하지만:</strong> "너무 공격적으로 팔지도 마라." 뜨거운 시장에서 너무 일찍 팔면 은퇴가 10년 늦어진다.</p>
+</div>
+
+<div class="cd">
+<h3>🥈 황금 규칙 #2: 10/20-MA보다 똑똑하다고 생각하지 마라</h3>
+<div class="qt">"10/20일 이동평균보다 자신이 똑똑하다고 생각하는 순간, 평범함에 빠진다. 경험에서 말하는 것이다." — Qullamaggie</div>
+<p>"추세장에서 리딩 종목을 잡으면, 이동평균은 마법처럼 작동한다. 문자 그대로 마법 선이다."</p>
+<p style="margin-top:6px"><strong>Jeff:</strong> "모든 것을 팔지 않는다, 시장이 틀렸음을 증명할 때까지. KC가 한 달에 200% 상승할 줄 누가 알았겠는가? 포지션을 유지하고 승자를 타는 법을 배워라. 성과에 영향을 미치는 이상치 포지션은 종종 큰 움직임을 예상하지 못했던 것들이다."</p>
+</div>
+
+<div class="cd">
+<h3>🥉 황금 규칙 #3: 스탑이 맞으면, 그냥 팔아라</h3>
+<div class="qt">"스탑아웃되면, 스탑아웃된 것이다. 생각하지 않는다, 그냥 나온다. 머뭇거리면 스탑이 2배, 3배가 되는 시나리오를 너무 많이 봤다." — Qullamaggie</div>
+<p><strong>Jeff:</strong> "스탑과의 관계가 성공을 정의한다." 3-Stop Strategy는 이 원칙의 체계적 구현 — 시장이 풀스탑 레벨에 도달하기 전에 사이즈를 줄여 심리적 부담과 실제 손실 모두 감소.</p>
+</div>
+
+<div class="cd">
+<h3>📈 추가 관리 원칙</h3>
+<ul>
+<li><strong>이틀 수익을 하루에 잃지 마라</strong> — 일일 손실 한도 개념</li>
+<li><strong>포지션 추가 타이밍 (BMNR 사례):</strong> 기존 포지션이 확인된 후 추가</li>
+<li><strong>35% 승률로 매년 플러스 유지:</strong> 평균 R 손실을 -0.67R로, 평균 R 수익을 높게 유지하면 가능</li>
+<li><strong style="color:var(--gold)">"성과 성장은 기존 트레이드를 잘 관리하는 데서 온다, 새로운 것을 찾는 것이 아니다."</strong></li>
+</ul>
+</div>
+</div>
+
+<!-- ===== CH8: JOURNALING ===== -->
+<div class="ch" id="c8">
+<div class="ch-hd"><div class="ch-n">Chapter 08</div><div class="ch-t">저널링 — 빅데이터 게임을 당신이 통제한다</div><div class="ch-s">"수익성 트레이딩은 의견이나 좋은 종목이 아닌 수학이다. 가장 큰 개선은 자기 자신을 분석하는 데서"</div></div>
+
+<div class="cd">
+<h3>🎲 트레이딩 = 빅데이터 게임</h3>
+<ul>
+<li><strong>랜덤성 감소가 시작점:</strong> 일관된 습관 → 랜덤성 감소 → 패턴 발견 → 엣지 정량화</li>
+<li><strong>6% 월간 복리 = 연 100%+ 달성 분해:</strong> 27% 승률로도 연 114% 가능한 접근법 (평균 R 관리 핵심)</li>
+<li><strong>손실 평균 보유기간 줄이기:</strong> 미실현 손실 포지션 보유에 대한 깊은 사고 필요. 3-Stop이 이를 체계화.</li>
+<li><strong>"포기 직전이라면:"</strong> 수익 모멘텀 부족이나 지속적 트레이드 미싱은 프로세스 문제이지 실력 문제가 아닐 수 있다.</li>
+</ul>
+</div>
+
+<div class="cd">
+<h3>📓 저널 모니터링 7파트</h3>
+<p>Jeff는 자체 엑셀 트레이드 저널 사용: 트레이드 기록, 포지션 사이즈 결정, 실현 P&L 기반 자산곡선 추적. <strong>33%와 66% 가격 레벨(진입에서 스탑까지)을 포함</strong>하는 것이 차별점.</p>
+<ul>
+<li><strong>Part 1-4:</strong> 일별/주별/월별 기록, 셋업별 승률, R 배수 분포, 시장 상황별 성과</li>
+<li><strong>Part 5 (P&L 히스토그램):</strong> 손익 분포 시각화 — 이상치 트레이드의 기여도 파악</li>
+<li><strong>Part 6:</strong> "YTD 수익률이 보여주지 않아도 많이 개선되었을 수 있다" — 승률, 평균 R, 드로다운 깊이 등 개선 지표를 분리 추적</li>
+<li><strong>Part 7:</strong> "이제 정량화 가능한 엣지를 알아야 한다" — 자신의 시스템 파라미터를 숫자로 확인</li>
+</ul>
+</div>
+
+<div class="cd" style="border-color:rgba(231,76,60,.3)">
+<h3 style="color:var(--rd)">⚠️ 드로다운 경험 & 기간 리뷰</h3>
+<p>"2022년 3개월 연속 드로다운을 겪었다." 기간 리뷰 프로세스는 <strong>수익성 유지를 위한 비협상 사항.</strong></p>
+<div class="qt">"Giovanni (@so_suerte): '월간 리뷰 후, 이번 달 손실의 90%가 30분 ORB + LoD 거리 > 60%를 엄격한 진입 기준으로 사용했다면 피할 수 있었음을 깨달았다. 때로 기회를 놓치지만, 더 중요한 것은 최적이 아닌 포지션에 진입하지 않을 이유를 찾아 더 많은 손실을 피하는 것이다.'"</div>
+</div>
+</div>
+
+<!-- ===== CH9: CONVICTION ===== -->
+<div class="ch" id="c9">
+<div class="ch-hd"><div class="ch-n">Chapter 09</div><div class="ch-t">내면화해야 할 6가지 그래픽</div><div class="ch-s">"이 6가지와 그들 간의 관계를 진정으로 내면화하라. 서로 얽혀있으며 새로운 관점을 제공할 것이다."</div></div>
+
+<div class="cg">
+<div class="cc"><div class="nb2">1</div><h4>🎯 타이트한 리스크의 포물선적 R 수익</h4><p>진입 리스크를 50% 줄이면, R 수익이 포물선적으로 증가. 같은 목표가에 대해 1% 리스크 진입은 5R, 0.5% 리스크 진입은 10R. 리스크 절반 = R 수익 2배. — Marios Stamatoudis</p></div>
+<div class="cc"><div class="nb2">2</div><h4>📊 몬테카를로 시뮬레이션 (500 트레이드)</h4><p>50% 더 타이트한 진입 vs 기본 진입을 500트레이드로 시뮬레이션. 작은 진입 개선이 장기적으로 자산곡선에 극적인 차이를 만든다. 결과: 타이트한 진입이 거의 모든 시나리오에서 우월.</p></div>
+<div class="cc"><div class="nb2">3</div><h4>📉 시스템 드로다운의 모습을 알라</h4><p>Michael Nauss CMT: 당신의 시스템에서 드로다운이 어떤 모습일지 깊이 이해해야 한다. "정상"을 알아야 "비정상"을 식별할 수 있다. — Marios: "정상적인 조정을 견디고, 비정상적 행동을 식별하는 것."</p></div>
+<div class="cc"><div class="nb2">4</div><h4>💰 고정 % 리스크의 장기 이점</h4><p>자산 대비 고정 % 리스크 유지 (1,000 트레이드 시뮬레이션). 자산이 커지면 절대 리스크도 커지고, 줄면 절대 리스크도 줄어 — 파산 확률을 극적으로 줄이면서 복리 효과 극대화.</p></div>
+<div class="cc"><div class="nb2">5</div><h4>📈 높은 수익 = 더 큰 R 절대 증가</h4><p>Martin Luk (USIC 2024 283%): 수익률이 높을수록 R의 절대적 증가폭이 가속적으로 커진다. 처음 +100% 달성에 필요한 R보다 +200→300% 달성에 필요한 추가 R이 더 작다. 복리의 힘.</p></div>
+<div class="cc"><div class="nb2">6</div><h4>⚡ 높은 ADR% 증권의 이점</h4><p>ADR% 대비 필요 자본: ADR% 3%→~33%, 5%→~20%, 8%+→~12%. <strong>1% 리스크 한도의 한계:</strong> 계좌가 작으면 높은 ADR% 종목에서 의미있는 포지션을 잡기 어려울 수 있음.</p></div>
+</div>
+
+<div class="cd" style="margin-top:16px">
+<h3>🔗 6가지 그래픽의 상호연결</h3>
+<p>①+② 타이트한 진입은 R 수익을 포물선적으로 높임 → ③ 드로다운 깊이를 알면 타이트한 진입에 따른 높은 승률 감소를 견딜 수 있음 → ④ 고정 % 리스크로 복리 효과 보호 → ⑤ 높은 수익은 R의 절대적 증가를 가속 → ⑥ 높은 ADR% 종목이 이 모든 것의 효과를 극대화.</p>
+<div class="qt">"연간 성과를 크게 높이려면 상황인식도 반드시 짝지어야 한다. 트레이딩을 장기 비즈니스로 취급하라. +EV 전략이 있어도 엣지는 전략만으로 나오지 않는다."</div>
+</div>
+</div>
+
+<!-- ===== CH10-12 ===== -->
+<div class="ch" id="c10">
+<div class="ch-hd"><div class="ch-n">Chapters 10·11·12</div><div class="ch-t">풀타임 트레이딩 · 추천 도서 · 무료 도구</div></div>
+
+<div class="cd">
+<h3>🔥 Ch 10. 풀타임 전환 — 27포스트 핵심 요약</h3>
+<p>Jeff의 실제 생활 패턴:</p>
+<ul>
+<li>매일 오전 8:30 전 기상 (GMT+8), 프리마켓 작업을 미국 개장(오후 9:30) 전 완료</li>
+<li>오후: 독서, 피트니스, Qullamaggie 스트림, 커피, 요리, 부동산 관리</li>
+<li>오전 2:30 전 취침 → 미국 점심 세션 이후 시장가 주문 습관적 회피</li>
+<li>평일 저녁 사교 활동 거의 없음 — 약 10년간 평일 술자리 제로</li>
+<li>"40세 전 특정 순자산 달성이 목표이며 그 스킬과 도구를 보유"</li>
+</ul>
+<p style="margin-top:8px"><strong style="color:var(--rd)">취약 그룹 경고:</strong> "상당한 자본이 있어도 트레이딩에 적합하지 않은 취약 그룹이 존재한다." / "좋은 커리어와 성장 전망이 있다면, 트레이딩보다 커리어가 나을 수 있다." / "파트타임 트레이딩으로 수입을 올리겠다는 것은 허상이다."</p>
+</div>
+
+<div class="sd">RECOMMENDED BOOKS</div>
+<div class="bg">
+<div class="bc"><div class="em">📕</div><h4>3대 구조적 핵심서</h4><p>Jeff가 선정한 트레이딩 구조의 기초를 다지는 3권</p></div>
+<div class="bc"><div class="em">🕯️</div><h4>Japanese Candlestick Charting</h4><p>Steve Nison. CFTe/CMT 시험 권장 도서.</p></div>
+<div class="bc"><div class="em">👻</div><h4>Phantom of the Pits</h4><p>"Market Wizard 명예에 합당한 인물." "the best loser is the long-term winner"의 원전.</p></div>
+</div>
+
+<div class="sd">FREE TOOLS & RESOURCES</div>
+<div class="cd">
+<h3>🔧 40+ 무료 도구 모음</h3>
+<ul>
+<li><strong>트위터 생산성:</strong> 투자자를 위한 트위터 피드 최적화 해킹 (기본편 + 확장편)</li>
+<li><strong>Top 8 무료 투자/트레이딩 웹 도구 (2023):</strong> 초기 도구 모음</li>
+<li><strong>Top 9 추가 도구 (2024):</strong> 2년간 발견한 추가 도구</li>
+<li><strong>25개 알려지지 않은 무료 도구 (2024):</strong> Druckenmiller F-13 분기별 포지션 분석 포함</li>
+<li><strong>TradingView 해킹/지표/템플릿/스크리닝 모음 (2024)</strong></li>
+<li><strong>FinanceCharts.com:</strong> "정말 좋아하며, 완전 무료"</li>
+<li><strong>자체 RS 히스토그램 스프레드시트:</strong> 무료 구글 시트 버전 공유 (@RonakSh92987573)</li>
+</ul>
+</div>
+</div>
+
+<!-- ===== CH13-14 ===== -->
+<div class="ch" id="c11">
+<div class="ch-hd"><div class="ch-n">Chapters 13·14</div><div class="ch-t">3년 지연 + 63개 성찰</div></div>
+
+<div class="cd">
+<h3>⚠️ Ch 13. 잘못된 것을 배워 3년을 낭비했다</h3>
+<div class="qt">"트위터 피드를 정제하라. 판매 없이 진짜 '트레이딩 성숙도'를 가진 합법적 트레이더만 팔로우하라."</div>
+<p><strong>추천 팔로우:</strong></p>
+<ul>
+<li><strong>BrianLeeTrades:</strong> Jeff가 가장 좋아하는 팔로우 중 하나. AMA 100+ 답변. "작은 손실의 가장 과소평가된 측면" 강조. "탐욕적이 되고 있는가?" 트위터 스페이스 운영.</li>
+<li><strong>LoneStockTrader:</strong> "M1/M5 ORB 전략에 필요한 정밀도를 해결했을 수 있다." "평균 R을 올리는 청산 규칙을 설계했다면, 인쇄기를 만든 것이다."</li>
+<li><strong>Clement Ang:</strong> 일일 탑다운 코멘터리. "읽기 쉽고 명확하며 시간효율적."</li>
+<li><strong>Druckenmiller x Nicolai Tangen (NBIM 2023):</strong> Jeff가 추출한 10가지 핵심 인사이트 공유</li>
+</ul>
+</div>
+
+<div class="sd">63 PERSONAL REFLECTIONS — 핵심 발췌</div>
+<div class="wg">
+<div class="wi"><span class="wn">#1·15년 스토리</span>16년간의 손절, 고통, 끈기 → $10M 멀티에셋. 두 분리된 은퇴 부모님 지원. 35세에 10M+ 부동산 포트폴리오.</div>
+<div class="wi"><span class="wn">#2·Grit의 게임</span>"이것은 끈기의 게임이다. 대부분의 사람들이 성공에 필요한 손실의 수를 깨달을 때까지 이기고 싶어한다."</div>
+<div class="wi"><span class="wn">#4·+30만불 미싱</span>"5번 연속 손절 후 +300K USD 트레이드를 놓쳤다." 하지만 시스템을 따른 것이 옳았다.</div>
+<div class="wi"><span class="wn">#6·특권 불필요</span>"특권 가정에서 올 필요 없다. 근면하고 지능적으로 일하면 평균을 넘어설 수 있다."</div>
+<div class="wi"><span class="wn">#9·농업과 같다</span>"좋은 트레이딩은 농업과 비슷하다. 씨를 뿌리고, 인내심을 갖고, 수확 시기를 기다린다."</div>
+<div class="wi"><span class="wn">#10·슬롯머신 아님</span>"매수&매도 버튼은 슬롯머신이 아니다." 각 클릭에 명확한 근거가 있어야.</div>
+<div class="wi"><span class="wn">#15·추격 = 파산</span>"놓친 트레이드는 파산시키지 않지만, 추격은 자주 그렇다."</div>
+<div class="wi"><span class="wn">#17·그물 수선</span>"어부가 바다에 못 나가면, 그물을 수선한다." 시장이 비활성일 때는 프로세스 개선 시간.</div>
+<div class="wi"><span class="wn">#18·단순함</span>"단순함이 트레이딩 성과를 높인다. 복잡함은 아니다."</div>
+<div class="wi"><span class="wn">#20·최고의 패자</span>"최고의 패자가 장기적 승자다." — Phantom of the Pits의 핵심 교훈.</div>
+<div class="wi"><span class="wn">#22·불확실성</span>"불확실성과의 관계가 성과를 결정한다. 리스크를 어떻게 포용하는가."</div>
+<div class="wi"><span class="wn">#29·마인드셋</span>"지난 12년간의 마인드셋 조정 (2022): 처음에는 돈에 집착했으나, 이제는 프로세스에 집착."</div>
+<div class="wi"><span class="wn">#39·100 트레이드</span>"100트레이드 단위로 생각하라. 개별 트레이드는 의미없다."</div>
+<div class="wi"><span class="wn">#42·포기 직전</span>"포기하고 싶은 충동은 성공 직전에 가장 강하다."</div>
+<div class="wi"><span class="wn">#44·루틴=비협상</span>"트레이딩 커리어의 수명은 탄탄한 일일 루틴 필요. 비협상."</div>
+<div class="wi"><span class="wn">#51·회피 이유 찾기</span>"항상 트레이드를 피할 이유를 찾아라, 트레이드할 이유가 아니라."</div>
+<div class="wi"><span class="wn">#63·수학적 엣지</span>"트레이딩은 수학적 엣지를 갈고 끈기를 유지하는 것이다."</div>
+</div>
+</div>
+
+<!-- ===== CH15-16 ===== -->
+<div class="ch" id="c12">
+<div class="ch-hd"><div class="ch-n">Chapters 15·16</div><div class="ch-t">영감 & FAQ & 시장 일정</div></div>
+
+<div class="cd">
+<h3>🏆 Ch 15. 실적 증명</h3>
+<ul>
+<li>2023년 세금만 <strong>$100K+ USD</strong> (싱가포르, 양도소득세 없음)</li>
+<li>2023.12: 11번째 부동산 — <strong>100만달러 수익 현금화, 무담보</strong></li>
+<li>2024.6: 12번째 부동산 — 총 <strong>$8.5M</strong> 돌파</li>
+<li>2025.7: 13번째 부동산 — 총 <strong>$10M+</strong> 돌파</li>
+<li>글로벌 매크로 전략 펀드로부터 직접 투자 수락, 1인 LLC 펀드 매니지먼트 시작</li>
+</ul>
+<div class="qt">"3년을 이 추구에 헌신할 수 있다면, 인생을 바꿀 수 있다. 하지만 끈기, 올바른 도구, 지식, 그리고 자신의 트레이딩에서 구축한 수학적 엣지가 필요하다."</div>
+<p><strong>12년 전 마인드셋 vs 현재:</strong> "12년 전 이것이 내 마인드셋이었다 — 더없이 틀렸다. 나처럼 되지 마라." 돈에 집착 → 프로세스에 집착으로 전환.</p>
+</div>
+
+<div class="sd">KEY MARKET DATES</div>
+<div class="dg">
+<div class="dc"><h4>옵션 만기</h4><p>매월 셋째 주 금요일</p></div>
+<div class="dc"><h4>분기말 리밸런싱</h4><p>3/6/9/12월 마지막 며칠</p></div>
+<div class="dc"><h4>S&P 500 재구성</h4><p>분기별 셋째 금요일 (Triple Witching)</p></div>
+<div class="dc"><h4>Russell 2000 재구성</h4><p>매년 6월 넷째 금요일</p></div>
+<div class="dc"><h4>MSCI 리밸런싱</h4><p>반기: 5월, 11월</p></div>
+<div class="dc"><h4>FTSE 리밸런싱</h4><p>분기: 3/6/9/12월</p></div>
+</div>
+
+<div class="sd">FAQ — 핵심 Q&A</div>
+
+<div class="cd"><h3>Q: 일관되게 수익성 있는 트레이더가 되기까지 얼마나?</h3><p>Jeff는 15년+ 여정. 처음 수년간 잘못된 것(복잡한 지표, 코스 구매, 잘못된 팔로우)을 배워 3년을 낭비. 핵심 전환점: 프로세스에 집착, 손실 통제, 단순함 추구.</p></div>
+
+<div class="cd"><h3>Q: 트레이딩 철학 한마디 요약?</h3><p>"상대강도 우선, 셋업은 그다음. 타이트한 리스크, 수학적 엣지, 일관된 프로세스. 승률보다 R 관리가 중요하다." — 24.8% 승률로도 +49% YTD.</p></div>
+
+<div class="cd"><h3>Q: RVOL 강조 이유?</h3><p>"강한 단기수익의 첫 번째 증거. 통계적 엣지 입증. 매년 수많은 불필요한 손절 방지." RVOL 없는 가격 움직임은 노이즈.</p></div>
+
+<div class="cd"><h3>Q: 3-Stop에서 2스탑 히트 후 반전하면?</h3><p>30분 고점을 돌파하여 수익 구간으로 들어가면, 잔여 1/3 포지션으로 진행. 손실된 2/3를 그 브레이크에서 재추가하는 것은 상황별 뉘앙스가 있으며, 재진입 사이징 방법론으로 R 손실을 -1R 이내로 관리.</p></div>
+
+<div class="cd"><h3>Q: 레버리지 ETF에서 LoD/RVOL — ETF? 기초자산? 둘 다?</h3><p>매우 유동성 높은 메가캡 종목에는 RVOL 요건을 적용하지 않음 (이미 충분한 유동성). 레버리지 ETF: 기초자산의 차트를 기반으로 셋업 판단, ETF 자체의 LoD/RVOL은 실행 확인용. 24시간 기초자산(XAUUSD, BTCUSD 등) ETF는 거래 세션 HOD 기준으로 측정.</p></div>
+
+<div class="cd"><h3>Q: 개장 후 30분 대기하여 ORH 측정?</h3><p>기본 원칙: 30분 진입 지연. 극도로 높은 RVOL이 즉시 나타나면 예외. M30 Re-ORH = 30분 후 ORH 재탈환이 강한 시그널.</p></div>
+
+<div class="cd"><h3>Q: 섹터 ATR 이격도 고려하나?</h3><p>"예. 예를 들어 XLK가 5x ATR% 접근 시 해당 섹터 종목에 대한 신규 롱 진입에 추가 조심." 섹터 레벨 과매수도 개별 종목 리스크에 영향.</p></div>
+
+<div class="cd" style="border-color:rgba(212,168,83,.4);text-align:center;margin-top:20px">
+<p style="font-size:14px;color:var(--gold);font-weight:700">Ch 17. 기관 주목 전략 — 유료 구독자 전용</p>
+<p style="font-size:12px;color:var(--tx2);margin-top:4px">커리어 기회나 자본 배분을 위한 기관 어텐션 유치 전략. 실제 펀드 배분 사례 포함.</p>
+</div>
+
+<div class="cd" style="margin-top:16px;text-align:center;background:linear-gradient(135deg,rgba(212,168,83,.06),rgba(78,205,196,.04))">
+<p style="font-size:15px;font-weight:700;color:var(--gold);margin-bottom:6px">📌 원본 전체 읽기</p>
+<p style="font-size:12px;color:var(--tx2)">
+Substack: jfsrev.substack.com/p/my-trading-tools-process-routine<br>
+Twitter: @jfsrev · LinkedIn · Instagram<br>
+외부 정리: qullamaggie.net/jeff-suns-method-and-flow<br>
+리스크 관리 정리: tradingresourcehub.substack.com (Kyna Kosling)
+</p>
+</div>
+</div>
+
+</div>
+
+<div style="text-align:center;padding:50px 20px;color:var(--tx2);font-size:11px;border-top:1px solid var(--br);margin-top:30px">
+Jeff Sun, CFTe "The Complete Trader's Guide" 구조화 완전판 · 원본 저작권: Jeff Sun<br>
+본 문서는 학습/참고 목적 구조화. 트윗 실제 내용은 공개적으로 접근 가능한 소스에서 수집.
+</div>
+
+<script>
+function go(n){
+document.querySelectorAll('.ch').forEach(c=>c.classList.remove('on'));
+document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+document.getElementById('c'+n).classList.add('on');
+document.querySelectorAll('.nb')[n].classList.add('on');
+window.scrollTo({top:document.querySelector('.nav').offsetTop,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
